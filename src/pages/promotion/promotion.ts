@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import {ModalController, NavController, NavParams, PopoverController} from 'ionic-angular';
+import {AdwancesearchPage} from "../adwancesearch/adwancesearch";
+import {MenuPage} from "../menu/menu";
+import {Promo2Page} from "../promo2/promo2";
 
 /**
  * Generated class for the PromotionPage page.
@@ -14,11 +17,25 @@ import {  NavController, NavParams } from 'ionic-angular';
 })
 export class PromotionPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,public popoverCtrl: PopoverController, private mdl:ModalController) {
+
+  }
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(MenuPage);
+    popover.present({
+      ev: myEvent
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PromotionPage');
+
+  modal(){
+    let md=this.mdl.create(AdwancesearchPage)
+    md.present()
+  }
+
+
+  gotochat(){
+    this.navCtrl.push(Promo2Page);
   }
 
 }

@@ -11,6 +11,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {PromotionPage} from "../pages/promotion/promotion";
+import {MenuPage} from "../pages/menu/menu";
+import {AdwancesearchPage} from "../pages/adwancesearch/adwancesearch";
+import {OnestepupPage} from "../pages/onestepup/onestepup";
+import {Promo2Page} from "../pages/promo2/promo2";
+import {SettingsPage} from "../pages/settings/settings";
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import {PromotionPage} from "../pages/promotion/promotion";
     ContactPage,
     HomePage,
     TabsPage,
-    PromotionPage
+    PromotionPage,
+    MenuPage,
+    AdwancesearchPage,
+    OnestepupPage,
+    Promo2Page,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +42,13 @@ import {PromotionPage} from "../pages/promotion/promotion";
     ContactPage,
     HomePage,
     TabsPage,
-    PromotionPage
+    PromotionPage,
+    MenuPage,
+    AdwancesearchPage,
+    OnestepupPage,
+    Promo2Page,
+    SettingsPage
+
   ],
   providers: [
     StatusBar,

@@ -5,14 +5,83 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Promotion</ion-title>
-  </ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only clear (click)="presentPopover($event)"><ion-icon name="menu" ></ion-icon></button>
+    </ion-buttons>
 
+    <ion-buttons right>
+      <button ion-button icon-only clear (click)="modal()"><ion-icon name="funnel"></ion-icon></button>
+    </ion-buttons>
+    <ion-searchbar
+      [(ngModel)]="myInput"
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="onInput($event)"
+      [animated]="true"
+      (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-card (click)="gotochat()">
+
+    <img src="http://1.bp.blogspot.com/-YXoMYpSJ9hI/URZmGI9TE4I/AAAAAAAASv4/qVf34pQp2dQ/s1600/Dubai+Wallpapers+04.jpg"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        Dubai
+      </ion-card-title>
+      <p>
+        Dubai City
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='pin'></ion-icon>
+          United Arad Emirates
+        </button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-card>
+
+  <ion-card (click)="gotochat()">
+
+    <img src="http://2.bp.blogspot.com/-hJZIkSNNCRY/URZmrXCwg5I/AAAAAAAASw0/KVwd85n_mWA/s1600/Dubai+Wallpapers+10.jpg"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        Dubai
+      </ion-card-title>
+      <p>
+        Dubai City
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='pin'></ion-icon>
+          United Arad Emirates
+        </button>
+      </ion-col>
+
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='time'></ion-icon>
+          12:34
+        </button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-card>
+
 
 </ion-content>
