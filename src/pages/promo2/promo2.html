@@ -10,17 +10,14 @@
     <ion-title></ion-title>
   </ion-navbar>
 <ion-toolbar>
-  <ion-segment [(ngModel)]="icons" color="light" mode="md">
-    <ion-segment-button value="camera">
+  <ion-segment [(ngModel)]="pet" color="light" mode="md">
+    <ion-segment-button value="about">
       <ion-col>
-        <ion-icon name="home"></ion-icon>
         About
       </ion-col>
     </ion-segment-button>
-    <ion-segment-button value="bookmark">
+    <ion-segment-button value="reviews">
       <ion-col>
-        <ion-icon name="chatboxes">
-        </ion-icon>
         Reviews
       </ion-col>
     </ion-segment-button>
@@ -30,5 +27,26 @@
 
 
 <ion-content padding>
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'about'">
+
+      <p>about</p>
+
+    </ion-list>
+
+
+
+
+
+
+    <ion-list *ngSwitchCase="'reviews'">
+
+      <p>reviews</p>
+
+    </ion-list>
+
+
+  </div>
+
 
 </ion-content>

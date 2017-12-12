@@ -14,6 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OnestepupPage {
 
+  pet:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -21,4 +22,10 @@ export class OnestepupPage {
     console.log('ionViewDidLoad OnestepupPage');
   }
 
+  ionViewDidEnter() {
+    this.pet='about'
+    console.log("checkin")
+
+    //this.load();
+  }
 }

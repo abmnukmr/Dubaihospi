@@ -13,29 +13,24 @@
 
   <ion-toolbar>
 
-    <ion-segment [(ngModel)]="icons" color="light" mode="md">
-      <ion-segment-button value="camera">
+    <ion-segment [(ngModel)]="pet" color="light" mode="md">
+      <ion-segment-button value="about">
         <ion-col>
-        <ion-icon name="home"></ion-icon>
        About
         </ion-col>
       </ion-segment-button>
-      <ion-segment-button value="bookmark">
+      <ion-segment-button value="services">
         <ion-col>
-        <ion-icon name="list-box">
-        </ion-icon>
         Services
         </ion-col>
       </ion-segment-button>
-      <ion-segment-button value="camer">
+      <ion-segment-button value="promos">
         <ion-col>
-        <ion-icon name="star"></ion-icon>
         Promos
         </ion-col>
       </ion-segment-button>
-      <ion-segment-button value="bookmar">
+      <ion-segment-button value="reviews">
         <ion-col>
-        <ion-icon name="chatboxes"></ion-icon>
         Reviews
         </ion-col>
       </ion-segment-button>
@@ -47,5 +42,38 @@
 
 
 <ion-content padding>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'about'">
+
+      <p>about</p>
+
+    </ion-list>
+
+
+
+    <ion-list *ngSwitchCase="'services'">
+
+      <p>Services</p>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'promos'">
+
+      <p>promos</p>
+
+    </ion-list>
+
+
+    <ion-list *ngSwitchCase="'reviews'">
+
+      <p>reviews</p>
+
+    </ion-list>
+
+
+  </div>
+
+
 
 </ion-content>
