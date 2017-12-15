@@ -7,7 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import * as firebase from "firebase";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {PromotionPage} from "../pages/promotion/promotion";
@@ -16,7 +16,32 @@ import {AdwancesearchPage} from "../pages/adwancesearch/adwancesearch";
 import {OnestepupPage} from "../pages/onestepup/onestepup";
 import {Promo2Page} from "../pages/promo2/promo2";
 import {SettingsPage} from "../pages/settings/settings";
+import {SearchPipe} from "../pipes/search/search";
+import { DoctordataProvider } from '../providers/doctordata/doctordata';
+import { DoctordatasearchProvider } from '../providers/doctordatasearch/doctordatasearch';
+import { PromodtaProvider } from '../providers/promodta/promodta';
+import {DatePicker} from "@ionic-native/date-picker";
+import {MybookingPage} from "../pages/mybooking/mybooking";
+import {EmailComposer} from "@ionic-native/email-composer";
+import { AngularFireModule } from 'angularfire2';
+import { AuthProvider } from '../providers/auth/auth';
+import { GooglePlus } from '@ionic-native/google-plus';
 
+
+
+export const firebaseConfig = {
+
+  apiKey: "AIzaSyDYV3PrIkavO1HTaCAIdf08erApUvTXeJA",
+  authDomain: "mavaeed.firebaseapp.com",
+  databaseURL: "https://mavaeed.firebaseio.com",
+  projectId: "mavaeed",
+  storageBucket: "mavaeed.appspot.com",
+  messagingSenderId: "574781895288"
+
+};
+
+
+firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     MyApp,
@@ -29,9 +54,12 @@ import {SettingsPage} from "../pages/settings/settings";
     AdwancesearchPage,
     OnestepupPage,
     Promo2Page,
-    SettingsPage
+    SettingsPage,
+    SearchPipe,
+    MybookingPage
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -47,13 +75,18 @@ import {SettingsPage} from "../pages/settings/settings";
     AdwancesearchPage,
     OnestepupPage,
     Promo2Page,
-    SettingsPage
+    SettingsPage,
+    MybookingPage
 
   ],
-  providers: [
-    StatusBar,
+  providers: [DatePicker, EmailComposer,
+    StatusBar, GooglePlus,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DoctordataProvider,
+    DoctordatasearchProvider,
+    PromodtaProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

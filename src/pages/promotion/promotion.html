@@ -10,9 +10,7 @@
       <button ion-button icon-only clear (click)="presentPopover($event)"><ion-icon name="menu" ></ion-icon></button>
     </ion-buttons>
 
-    <ion-buttons right>
-      <button ion-button icon-only clear (click)="modal()"><ion-icon name="funnel"></ion-icon></button>
-    </ion-buttons>
+
     <ion-searchbar
       [(ngModel)]="myInput"
       [showCancelButton]="shouldShowCancel"
@@ -25,6 +23,13 @@
 
 
 <ion-content padding>
+
+  <!--
+    <ion-list  >
+      <ion-item *ngFor="let item of items |search:'name,catagory,phone,email':iname"  tappable (click)="goto(item.email)" >
+      </ion-item>
+    </ion-list>
+    -->
 
   <ion-card (click)="gotochat()">
 

@@ -48,6 +48,38 @@
 
       <p>about</p>
 
+      <ion-card>
+
+
+
+        <img src="https://www.rd.com/wp-content/uploads/2016/05/01-secrets-doctors-wont-tell.jpg">
+
+
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="call"></ion-icon>
+              <div>Call</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="star"></ion-icon>
+              <div>Favourite</div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <button ion-button (click)="changetab()"> Book Now</button>
+          </ion-col>
+        </ion-row>
+
+        <ion-card-content>
+          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+        </ion-card-content>
+
+
+      </ion-card>
+
     </ion-list>
 
 
@@ -55,6 +87,33 @@
     <ion-list *ngSwitchCase="'services'">
 
       <p>Services</p>
+
+
+
+      <ion-chip  (click)="showdate()">
+        <ion-icon name="time"></ion-icon>
+        <ion-label>12:00 AM - 1:00 PM</ion-label>
+      </ion-chip>
+
+
+      <ion-chip  (click)="sendmail()">
+        <ion-icon name="time"></ion-icon>
+        <ion-label>12:00 AM - 1:00 PM</ion-label>
+      </ion-chip>
+      <ion-chip (click)="showdate()">
+        <ion-icon name="time"></ion-icon>
+        <ion-label>12:00 AM - 1:00 PM</ion-label>
+      </ion-chip>
+      <ion-chip (click)="showdate()">
+        <ion-icon name="time"></ion-icon>
+        <ion-label>12:00 AM - 1:00 PM</ion-label>
+      </ion-chip>
+
+      <ion-chip (click)="showdate()">
+        <ion-icon name="time"></ion-icon>
+        <ion-label>12:00 AM - 1:00 PM</ion-label>
+      </ion-chip>
+
 
     </ion-list>
 
