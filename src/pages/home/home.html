@@ -1,20 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons left>
-    <button ion-button icon-only clear (click)="presentPopover($event)"><ion-icon name="menu" ></ion-icon></button>
-    </ion-buttons>
+
 
       <ion-searchbar
+        placeholder="Search...."
       [(ngModel)]="myInput"
       [showCancelButton]="shouldShowCancel"
-      (ionInput)="onInput($event)"
       [animated]="true"
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
      </ion-navbar>
 </ion-header>
 
-<ion-content padding-left="1px" padding-right="1px">
+<ion-content padding-left="1px" padding-right="1px" >
 
 
 <!--
@@ -22,17 +20,20 @@
     <ion-item *ngFor="let item of items |search:'name,catagory,phone,email':iname"  tappable (click)="goto(item.email)" >
     </ion-item>
   </ion-list>
+
   -->
-    <ion-card (click)="gotochat()">
 
-    <img src="http://1.bp.blogspot.com/-YXoMYpSJ9hI/URZmGI9TE4I/AAAAAAAASv4/qVf34pQp2dQ/s1600/Dubai+Wallpapers+04.jpg"/>
+
+  <ion-card (click)="gotochat(item.email)"  *ngFor="let item of docterdata|search:'name,about,email,doctor_type,phone,services':myInput" >
+
+    <img [src]="item.bg_image"/>
 
     <ion-card-content>
       <ion-card-title>
-        Dubai
+
+        <P [innerHTML]="item.name"></P>
       </ion-card-title>
-      <p>
-       Dubai City
+      <p [innerHTML]="item.about">
       </p>
     </ion-card-content>
 
@@ -40,7 +41,7 @@
       <ion-col>
         <button ion-button clear small color="danger" icon-start>
           <ion-icon name='pin'></ion-icon>
-          United Arad Emirates
+       <P [innerHTML]="item.Location"></P>
         </button>
       </ion-col>
 
@@ -48,30 +49,6 @@
 
   </ion-card>
 
-  <ion-card (click)="gotochat()">
-
-    <img src="http://2.bp.blogspot.com/-hJZIkSNNCRY/URZmrXCwg5I/AAAAAAAASw0/KVwd85n_mWA/s1600/Dubai+Wallpapers+10.jpg"/>
-
-    <ion-card-content>
-      <ion-card-title>
-        Dubai
-      </ion-card-title>
-      <p>
-        Dubai City
-      </p>
-    </ion-card-content>
-
-    <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='pin'></ion-icon>
-          United Arad Emirates
-        </button>
-      </ion-col>
-
-    </ion-row>
-
-  </ion-card>
 
 
 

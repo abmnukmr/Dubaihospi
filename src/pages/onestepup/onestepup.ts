@@ -4,6 +4,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import {EmailComposer} from "@ionic-native/email-composer";
 import * as firebase from "firebase/app";
 import {SettingsPage} from "../settings/settings";
+import {DoctordatasearchProvider} from "../../providers/doctordatasearch/doctordatasearch";
 
 /**
  * Generated class for the OnestepupPage page.
@@ -19,7 +20,11 @@ import {SettingsPage} from "../settings/settings";
 export class OnestepupPage {
  email1:any;
   pet:any;
-  constructor(private emailComposer: EmailComposer,public navCtrl: NavController, public navParams: NavParams,private datePicker: DatePicker) {
+  getmail:any;
+  docterdata:any;
+  constructor(public docterr:DoctordatasearchProvider,private emailComposer: EmailComposer,public navCtrl: NavController, public navParams: NavParams,private datePicker: DatePicker) {
+
+
   }
 
   ionViewDidLoad() {
@@ -27,6 +32,12 @@ export class OnestepupPage {
   }
 
   ionViewDidEnter() {
+  this.getmail=this.navParams.get("email")
+       console.log(this.getmail);
+
+    this.docterr.getdata(this.getmail).then((data)=>{
+      this.docterdata=data;
+    })
     this.pet='about'
     console.log("checkin")
       var user = firebase.auth().currentUser;
@@ -42,10 +53,11 @@ export class OnestepupPage {
       }
 
 
-
-    //this.load();
   }
 
+  loaddata(){
+
+  }
 
   changetab(){
     this.pet='services'

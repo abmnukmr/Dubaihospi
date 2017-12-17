@@ -46,25 +46,25 @@
   <div [ngSwitch]="pet">
     <ion-list *ngSwitchCase="'about'">
 
-      <p>about</p>
+      <p [innerHTML]="docterdata?.about"></p>
 
       <ion-card>
 
 
 
-        <img src="https://www.rd.com/wp-content/uploads/2016/05/01-secrets-doctors-wont-tell.jpg">
-
+        <img [src]="docterdata?.bg_img">
 
         <ion-row>
           <ion-col>
             <button ion-button icon-left clear small>
               <ion-icon name="call"></ion-icon>
-              <div>Call</div>
+              <a href="tel:{{docterdata.phone}}" style="margin-left: 4px;">{{docterdata.phone}}</a>
+
             </button>
           </ion-col>
           <ion-col>
             <button ion-button icon-left clear small>
-              <ion-icon name="star"></ion-icon>
+              <ion-icon name="heart"></ion-icon>
               <div>Favourite</div>
             </button>
           </ion-col>
@@ -74,7 +74,8 @@
         </ion-row>
 
         <ion-card-content>
-          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+          <p [innerHTML]="docterdata.about"></p>
+          <p  [innerHTML]="docterdata.services"></p>
         </ion-card-content>
 
 
@@ -90,43 +91,26 @@
 
 
 
-      <ion-chip  (click)="showdate()">
+
+      <ion-chip (click)="showdate()" *ngFor="let item of docterdata.slots">
         <ion-icon name="time"></ion-icon>
-        <ion-label>12:00 AM - 1:00 PM</ion-label>
+        <ion-label [innerHTML]="item.time"></ion-label>
       </ion-chip>
 
-
-      <ion-chip  (click)="sendmail()">
-        <ion-icon name="time"></ion-icon>
-        <ion-label>12:00 AM - 1:00 PM</ion-label>
-      </ion-chip>
-      <ion-chip (click)="showdate()">
-        <ion-icon name="time"></ion-icon>
-        <ion-label>12:00 AM - 1:00 PM</ion-label>
-      </ion-chip>
-      <ion-chip (click)="showdate()">
-        <ion-icon name="time"></ion-icon>
-        <ion-label>12:00 AM - 1:00 PM</ion-label>
-      </ion-chip>
-
-      <ion-chip (click)="showdate()">
-        <ion-icon name="time"></ion-icon>
-        <ion-label>12:00 AM - 1:00 PM</ion-label>
-      </ion-chip>
 
 
     </ion-list>
 
     <ion-list *ngSwitchCase="'promos'">
 
-      <p>promos</p>
+      <p [innerHTML]="docterdata.promos"></p>
 
     </ion-list>
 
 
     <ion-list *ngSwitchCase="'reviews'">
 
-      <p>reviews</p>
+      <p [innerHTML]="docterdata.Reviews"></p>
 
     </ion-list>
 

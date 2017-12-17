@@ -30,14 +30,18 @@
   <div [ngSwitch]="pet">
     <ion-list *ngSwitchCase="'about'">
 
-      <p>about</p>
+
       <ion-card>
-        <img src="https://www.w3schools.com/w3css/img_fjords.jpg">
+        <img [src]="promodat.bg_image" />
         <ion-row>
           <ion-col>
             <button ion-button icon-left clear small>
               <ion-icon name="call"></ion-icon>
-              <div>Call</div>
+              <div>
+
+                <a href="tel:{{promodat.phone}}" style="margin-left: 4px;">{{promodat.phone}}</a>
+
+              </div>
             </button>
           </ion-col>
           <ion-col>
@@ -52,7 +56,7 @@
         </ion-row>
 
         <ion-card-content>
-          <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+         <p [innerHTML]="promodat.about"></p>
         </ion-card-content>
 
 
@@ -68,7 +72,7 @@
 
     <ion-list *ngSwitchCase="'reviews'">
 
-      <p>reviews</p>
+      <p [innerHTML]="promodat.Reviews"></p>
 
     </ion-list>
 

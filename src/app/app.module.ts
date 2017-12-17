@@ -2,7 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -26,6 +25,8 @@ import {EmailComposer} from "@ionic-native/email-composer";
 import { AngularFireModule } from 'angularfire2';
 import { AuthProvider } from '../providers/auth/auth';
 import { GooglePlus } from '@ionic-native/google-plus';
+import {HttpClientModule} from "@angular/common/http";
+import {PromodtasearchProvider} from "../providers/promodtasearch/promodtasearch";
 
 
 
@@ -59,6 +60,7 @@ firebase.initializeApp(firebaseConfig);
     MybookingPage
   ],
   imports: [
+    HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
     IonicModule.forRoot(MyApp)
@@ -84,6 +86,8 @@ firebase.initializeApp(firebaseConfig);
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DoctordataProvider,
+    PromodtasearchProvider,
+    PromodtaProvider,
     DoctordatasearchProvider,
     PromodtaProvider,
     AuthProvider

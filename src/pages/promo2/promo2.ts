@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {PromodtaProvider} from "../../providers/promodta/promodta";
 
 /**
  * Generated class for the Promo2Page page.
@@ -14,17 +15,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Promo2Page {
 pet:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+geten:any;
+promodat:any=[];
+  constructor(public dbr:PromodtaProvider,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Promo2Page');
   }
   ionViewDidEnter() {
+
     this.pet='about'
+    this.geten=this.navParams.get("email");
+    console.log(this.geten);
     console.log("checkin")
+    this.dbr.getdata(this.geten).then((data)=>{
+      this.promodat=data;
+      console.log(this.promodat);
+
+    })
+
 
     //this.load();
   }
 
+
+
+  load(){
+
+  }
 }

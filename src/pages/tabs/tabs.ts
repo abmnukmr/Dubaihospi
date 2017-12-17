@@ -5,6 +5,7 @@ import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 import {PromotionPage} from "../promotion/promotion";
 import {NavController, NavParams, Tabs} from "ionic-angular";
+import {SettingsPage} from "../settings/settings";
 
 @Component({
   templateUrl: 'tabs.html'
@@ -13,10 +14,10 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = PromotionPage;
-
   tab3Root = AboutPage;
-
   tab4Root = ContactPage;
+  tab5Root = SettingsPage;
+
   ft:any
   f9:any;
 

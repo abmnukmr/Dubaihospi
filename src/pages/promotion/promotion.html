@@ -6,15 +6,11 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-buttons left>
-      <button ion-button icon-only clear (click)="presentPopover($event)"><ion-icon name="menu" ></ion-icon></button>
-    </ion-buttons>
 
 
     <ion-searchbar
       [(ngModel)]="myInput"
       [showCancelButton]="shouldShowCancel"
-      (ionInput)="onInput($event)"
       [animated]="true"
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
@@ -31,56 +27,32 @@
     </ion-list>
     -->
 
-  <ion-card (click)="gotochat()">
 
-    <img src="http://1.bp.blogspot.com/-YXoMYpSJ9hI/URZmGI9TE4I/AAAAAAAASv4/qVf34pQp2dQ/s1600/Dubai+Wallpapers+04.jpg"/>
+
+  <ion-card (click)="gotochat(item.email)" *ngFor="let item of promodata |search:'name,about,email,doctor_type,phone,services':myInput">
+
+    <img [src]="item.bg_image"/>
 
     <ion-card-content>
       <ion-card-title>
-        Dubai
+        <p [innerHTML]="item.about"></p>
       </ion-card-title>
-      <p>
-        Dubai City
-      </p>
-    </ion-card-content>
+      <p [innerHTML]="item.services"></p>
+         </ion-card-content>
 
     <ion-row no-padding>
       <ion-col>
         <button ion-button clear small color="danger" icon-start>
           <ion-icon name='pin'></ion-icon>
-          United Arad Emirates
-        </button>
-      </ion-col>
+          <p [innerHTML]="item.Location"></p>
 
-    </ion-row>
-
-  </ion-card>
-
-  <ion-card (click)="gotochat()">
-
-    <img src="http://2.bp.blogspot.com/-hJZIkSNNCRY/URZmrXCwg5I/AAAAAAAASw0/KVwd85n_mWA/s1600/Dubai+Wallpapers+10.jpg"/>
-
-    <ion-card-content>
-      <ion-card-title>
-        Dubai
-      </ion-card-title>
-      <p>
-        Dubai City
-      </p>
-    </ion-card-content>
-
-    <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='pin'></ion-icon>
-          United Arad Emirates
         </button>
       </ion-col>
 
       <ion-col>
         <button ion-button clear small color="danger" icon-start>
           <ion-icon name='time'></ion-icon>
-          12:34
+          <p [innerHTML]="item.time"></p>
         </button>
       </ion-col>
 
