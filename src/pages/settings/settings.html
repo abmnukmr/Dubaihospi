@@ -7,43 +7,32 @@
 <ion-header>
 
   <ion-navbar>
+   <!--
     <ion-buttons right>
       <button ion-button icon-only clear (click)="close()"><ion-icon name="close" ></ion-icon></button>
     </ion-buttons>
-
-    <ion-title>settings</ion-title>
+-->
+    <ion-title>Settings</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list no-lines no-border [hidden]="!auth">
-    <ion-item >
-      <ion-label color="primary" stacked>Name</ion-label>
-      <ion-input placeholder="Name" [(ngModel)]="name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label color="primary" stacked>Email</ion-label>
-      <ion-input placeholder="Email" [(ngModel)]="email1" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked>Phone No.</ion-label>
-      <ion-input placeholder="Phone No" type="number"></ion-input>
-    </ion-item>
-  </ion-list>
 
 
 
 
-  <button ion-button icon-start full [hidden]="auth" (click)="googleauth()">
-    <ion-icon name="logo-google" ></ion-icon>
-    Login with Google
+  <button ion-button icon-start full  round clear (click)="gototodoctorprof()"  style="margin-top: 50%;">
+    Add  yourself as a doctor with Mavaeed
 
   </button>
 
 
+  <button ion-button icon-left full    (click)="gotodoctor()"style="margin-top: 10%;">
+    <ion-icon name="home"></ion-icon>
+     Go to Doctor profile
+  </button>
 
 
 </ion-content>

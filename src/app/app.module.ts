@@ -26,8 +26,26 @@ import { AngularFireModule } from 'angularfire2';
 import { AuthProvider } from '../providers/auth/auth';
 import { GooglePlus } from '@ionic-native/google-plus';
 import {HttpClientModule} from "@angular/common/http";
+import { HttpModule } from '@angular/http'
 import {PromodtasearchProvider} from "../providers/promodtasearch/promodtasearch";
+import { BookingProvider } from '../providers/booking/booking';
+import { FavouriteProvider } from '../providers/favourite/favourite';
+import {DoctersPage} from "../pages/docters/docters";
+import {AdddoctorPage} from "../pages/adddoctor/adddoctor";
+import {RegisterPage} from "../pages/register/register";
+import {AdduserPage} from "../pages/adduser/adduser";
+//import { IonicStorageModule } from '@ionic/storage';
 
+import {Camera} from "@ionic-native/camera";
+import {FilePath} from "@ionic-native/file-path";
+import {FileTransfer, FileTransferError, FileTransferObject} from "@ionic-native/file-transfer";
+import { Transfer } from '@ionic-native/transfer';
+import {File} from "@ionic-native/file";
+import {UploadprofilePage} from "../pages/uploadprofile/uploadprofile";
+import {AddDdctorPage} from "../pages/add-ddctor/add-ddctor";
+import {IonicStorageModule} from "@ionic/storage";
+import { UserdataProvider } from '../providers/userdata/userdata';
+import {AddpromoPage} from "../pages/addpromo/addpromo";
 
 
 export const firebaseConfig = {
@@ -57,12 +75,21 @@ firebase.initializeApp(firebaseConfig);
     Promo2Page,
     SettingsPage,
     SearchPipe,
-    MybookingPage
+    MybookingPage,
+    DoctersPage,
+    AdddoctorPage,
+    RegisterPage,
+    AdduserPage,
+    UploadprofilePage,
+    AddDdctorPage,
+    AddpromoPage
   ],
   imports: [
+    HttpModule,
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -78,11 +105,19 @@ firebase.initializeApp(firebaseConfig);
     OnestepupPage,
     Promo2Page,
     SettingsPage,
-    MybookingPage
+    MybookingPage,
+    DoctersPage,
+    AdddoctorPage,
+    RegisterPage,
+    AdduserPage,
+    UploadprofilePage,
+    AddDdctorPage,
+    AddpromoPage
 
   ],
   providers: [DatePicker, EmailComposer,
-    StatusBar, GooglePlus,
+    Camera,FilePath,File,FileTransfer,FileTransferObject,Transfer,
+    StatusBar, GooglePlus,BookingProvider,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DoctordataProvider,
@@ -90,7 +125,10 @@ firebase.initializeApp(firebaseConfig);
     PromodtaProvider,
     DoctordatasearchProvider,
     PromodtaProvider,
-    AuthProvider
+    AuthProvider,
+    BookingProvider,
+    FavouriteProvider,
+    UserdataProvider
   ]
 })
 export class AppModule {}

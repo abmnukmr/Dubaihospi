@@ -2,7 +2,7 @@
   <ion-navbar>
 
 
-
+<ion-title> My Favourites</ion-title>
     <!--
  <ion-searchbar
    [(ngModel)]="myInput"
@@ -17,6 +17,17 @@
 
 <ion-content>
 
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
+
+  <ion-list>
+    <ion-item  *ngFor="let item of bookingdataa">
+      <h4 style="color: mediumorchid;" [innerHTML]="item.docter_name"></h4>
+      <h2 [innerHTML]="item.user_decription"></h2>
+      <button ion-button clear item-end (click)="delete(item.fav_id)"> Delete</button>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

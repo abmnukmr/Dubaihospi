@@ -1,0 +1,65 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="Dismiss4()">
+
+        <ion-icon name="close" padding-right="8px" ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only  (click)="uploadImage()"  *ngIf="show">
+        <ion-icon name="cloud-upload" padding-right="8px" ></ion-icon>
+      </button>    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+
+  <ion-list>
+
+
+
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="title" placeholder="title"></ion-input>
+    </ion-item>
+
+
+
+    <ion-item>
+      <ion-textarea [(ngModel)]="discription" placeholder=" Description*" rows="4" style=" white-space:pre-wrap;word-break: break-all;"></ion-textarea>
+    </ion-item>
+
+
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="discount" placeholder="Discount(eg. 20% Off )"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+
+  <button ion-button icon-only round block (click) ="openMenu()" [hidden]="butn">
+    <ion-icon name="md-images"></ion-icon>
+    <ion-icon name="add"></ion-icon>
+  </button>
+
+  <div   *ngFor="let img of images;let i=index">
+    <img [src]="img.url"  (load)="imageLoaded()" #imageSrc/>
+
+  </div>
+
+
+
+
+
+
+</ion-content>

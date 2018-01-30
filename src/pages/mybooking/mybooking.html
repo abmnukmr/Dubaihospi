@@ -8,12 +8,85 @@
 
   <ion-navbar>
 
-    <ion-title>Mybooking</ion-title>
+    <ion-title>User</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="edit()"  [hidden]="!nt" >
+
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="updateuser()"  [hidden]="nt">
+        SAVE
+      </button>
+    </ion-buttons>
+
+
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="logout()"   >
+
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
+
+     <ion-refresher (ionRefresh)="doRefresh($event)">
+         <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+
+    <ion-item >
+      <ion-label color="primary" floating>Name</ion-label>
+      <ion-input [(ngModel)]="name"  [readonly]="ty"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label color="primary" floating>Age</ion-label>
+      <ion-input type="number" [(ngModel)]="age"  [readonly]="ty"></ion-input>
+    </ion-item>
+
+    <ion-item >
+      <ion-label color="primary" floating>Blood Group</ion-label>
+      <ion-input type="text" [(ngModel)]="bg" [readonly]="ty" ></ion-input>
+    </ion-item>
+
+
+    <ion-item >
+      <ion-label color="primary" floating>Phone</ion-label>
+      <ion-input type="number" [(ngModel)]="phone"  [readonly]="ty"></ion-input>
+    </ion-item>
+
+
+    <ion-item >
+      <ion-label>Sex</ion-label>
+      <ion-select [(ngModel)]="sex" >
+        <ion-option value="female">Female</ion-option>
+        <ion-option value="male">Male</ion-option>
+        <ion-option value="others">Others</ion-option>
+      </ion-select>
+    </ion-item>
+
+<ion-item-divider>
+  <h2 style="color: #943aff;">My Booking</h2>
+</ion-item-divider>
+
+
+    <ion-list>
+       <ion-item  *ngFor="let item of bookingdataa">
+           <h2 style="color: #cb1b58" [innerHTML]="item.docter_name"></h2>
+           <h3 [innerHTML]="item.booking_date"></h3>
+           <p  [innerHTML]="item.timeslot"></p>
+          <button ion-button clear item-end (click)="delete(item.orderid,item.docter_email)"> Cancel Booking</button>
+
+    </ion-item>
+
+    </ion-list>
 
 </ion-content>

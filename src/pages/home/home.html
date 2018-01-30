@@ -24,16 +24,18 @@
   -->
 
 
-  <ion-card (click)="gotochat(item.email)"  *ngFor="let item of docterdata|search:'name,about,email,doctor_type,phone,services':myInput" >
+  <ion-card (click)="gotochat(item.email)"  [hidden]="item.show=='true'?false:true"  *ngFor="let item of docterdata|search:'name,doctor_type':myInput" >
 
-    <img [src]="item.bg_image"/>
+    <img [src]="item.bg_img" style="width: 100%;height: 130px;"/>
 
     <ion-card-content>
       <ion-card-title>
 
-        <P [innerHTML]="item.name"></P>
+        <h2 style="color: mediumorchid; text-align:left" [innerHTML]="item.name"></h2>
+
+        <h5 style="color: #d3891f; text-align: justify;font-size: 12px;" [innerHTML]="item.doctor_type"></h5>
       </ion-card-title>
-      <p [innerHTML]="item.about">
+      <p [innerHTML]="item.about" style="text-align:justify;font-size: 10px;">
       </p>
     </ion-card-content>
 
@@ -41,7 +43,7 @@
       <ion-col>
         <button ion-button clear small color="danger" icon-start>
           <ion-icon name='pin'></ion-icon>
-       <P [innerHTML]="item.Location"></P>
+       <p [innerHTML]="item.Location" style="text-align: justify;color: #ffaf24;font-size: 12px;"></p>
         </button>
       </ion-col>
 

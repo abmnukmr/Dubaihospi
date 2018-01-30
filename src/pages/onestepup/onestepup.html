@@ -7,29 +7,37 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>OneSetUp</ion-title>
+    <ion-title> Doctors</ion-title>
 
+
+
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="showCheckbox()"  >
+
+        <ion-icon name="add" [hidden]="drt"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
   <ion-toolbar>
 
     <ion-segment [(ngModel)]="pet" color="light" mode="md">
-      <ion-segment-button value="about">
+      <ion-segment-button value="about" (ionSelect)="showpp()">
         <ion-col>
        About
         </ion-col>
       </ion-segment-button>
-      <ion-segment-button value="services">
+      <ion-segment-button value="services" (ionSelect)="showpp()">
         <ion-col>
-        Services
+        Schedule
         </ion-col>
       </ion-segment-button>
-      <ion-segment-button value="promos">
+      <ion-segment-button value="promos" (ionSelect)="showpp()">
         <ion-col>
         Promos
         </ion-col>
       </ion-segment-button>
-      <ion-segment-button value="reviews">
+      <ion-segment-button value="reviews" (ionSelect)="showp()" >
         <ion-col>
         Reviews
         </ion-col>
@@ -46,13 +54,12 @@
   <div [ngSwitch]="pet">
     <ion-list *ngSwitchCase="'about'">
 
-      <p [innerHTML]="docterdata?.about"></p>
 
       <ion-card>
 
 
 
-        <img [src]="docterdata?.bg_img">
+        <img [src]="docterdata?.bg_img" style="width: 100%;height: 130px;"/>
 
         <ion-row>
           <ion-col>
@@ -63,7 +70,7 @@
             </button>
           </ion-col>
           <ion-col>
-            <button ion-button icon-left clear small>
+            <button ion-button icon-left clear small (click)="addtofav(docterdata.name,docterdata.email,docterdata.services)">
               <ion-icon name="heart"></ion-icon>
               <div>Favourite</div>
             </button>
@@ -74,8 +81,16 @@
         </ion-row>
 
         <ion-card-content>
-          <p [innerHTML]="docterdata.about"></p>
-          <p  [innerHTML]="docterdata.services"></p>
+          <h2 [innerHTML]="docterdata.name" style="text-align: justify;color: #943aff"></h2>
+          <h5 style="color: #d3891f; text-align: justify;font-size: 12px;" [innerHTML]="docterdata.doctor_type" ></h5>
+
+          <h4 style="color: #3a2c40"> About</h4>
+
+          <p [innerHTML]="docterdata.about" style="text-align: justify;font-size: 10px;"></p>
+
+          <h4 style="color: #0f0618"> Services</h4>
+
+          <p  [innerHTML]="docterdata.services" style="text-align: justify; font-size: 10px; color: #000000"></p>
         </ion-card-content>
 
 
@@ -87,31 +102,69 @@
 
     <ion-list *ngSwitchCase="'services'">
 
-      <p>Services</p>
 
 
 
 
-      <ion-chip (click)="showdate()" *ngFor="let item of docterdata.slots">
+      <ion-chip (click)="showdate(item.time)" *ngFor="let item of docterdata.slots">
         <ion-icon name="time"></ion-icon>
-        <ion-label [innerHTML]="item.time"></ion-label>
+        <ion-label [innerHTML]="item.time" style="text-align: justify"></ion-label>
       </ion-chip>
 
 
 
     </ion-list>
 
+
+
+
     <ion-list *ngSwitchCase="'promos'">
 
-      <p [innerHTML]="docterdata.promos"></p>
+      <ion-card  *ngFor="let item of docterdata.promos ">
 
+
+        <ion-card-content>
+
+          <img [src]="item.bg_img" style="width: 100%;height: 130px;"/>
+
+          <ion-item>
+            <ion-row>
+          <ion-icon name="ios-pricetags" color="disk"></ion-icon>
+          <h3 style="color:#ff632b;margin-left:0%;" [innerHTML]="item.discount"></h3>
+            </ion-row>
+          </ion-item>
+          <ion-card-title>
+            <h3 style="font-size: 12px;color: #3e3338; text-align: justify;font-weight: bold;" [innerHTML]="item.title"></h3>
+          </ion-card-title>
+          <p  style="font-size: 12px;color: #3e3338;text-align: justify;" [innerHTML]="item.about"></p>
+        </ion-card-content>
+      </ion-card>
     </ion-list>
+
+
+
+
 
 
     <ion-list *ngSwitchCase="'reviews'">
 
-      <p [innerHTML]="docterdata.Reviews"></p>
 
+      <ion-list  *ngFor="let item of docterdata.Reviews " no-padding  no-lines="false">
+      <div>
+        <ion-row>
+          <ion-col col-1 >
+         <ion-icon name="ios-contact" color="primary" item-start></ion-icon>
+          </ion-col>
+          <ion-col col-11>
+          <h5 style="color: #943aff;" [innerHTML]="item.username"></h5>
+          </ion-col>
+        </ion-row>
+         <p [innerHTML]="item.title"></p>
+         <p [innerHTML]="item.date" item-end style="font-size: 8px"></p>
+      </div>
+
+
+      </ion-list>
     </ion-list>
 
 

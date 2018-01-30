@@ -1,0 +1,96 @@
+<!--
+  Generated template for the DoctersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+</ion-header>
+
+
+<ion-content no-padding>
+
+
+      <p style="margin-left:30%;">SIGN UP FOR DOCTOR</p>
+  <h6  style="color: #943aff; margin-left:44%;" (click)="skp()" >SKIP</h6>
+
+
+
+
+
+  <ion-list no-lines no-border no-padding>
+    <ion-item  >
+      <ion-label color="primary" stacked>Name</ion-label>
+      <ion-input placeholder="Name" [(ngModel)]="d_name"></ion-input>
+    </ion-item>
+
+
+
+    <ion-item >
+      <ion-label>Specialization</ion-label>
+      <ion-select  [(ngModel)]="Specialize" placeholder="Specialization" item-end >
+        <ion-option value={{it}} *ngFor="let it of items">{{it}}</ion-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Phone No.</ion-label>
+      <ion-input placeholder="Phone No" type="text" [(ngModel)]="d_number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>About</ion-label>
+      <ion-textarea placeholder="About" type="text" [(ngModel)]="d_about"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Service</ion-label>
+      <ion-textarea placeholder="Service" type="text" [(ngModel)]="d_service"></ion-textarea>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Location </ion-label>
+      <ion-input placeholder="Location" type="text" [(ngModel)]="d_location"></ion-input>
+    </ion-item>
+
+
+
+
+
+    <ion-item *ngFor="let tm of timeslot; let i=index">
+      <ion-label color="primary" stacked>{{tm.time}}</ion-label>
+
+      <button item-end ion-button icon-only clear (click)="deltime(i)" >
+        <ion-icon name="trash"></ion-icon>
+      </button>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Add timings"  [(ngModel)]="time"  readonly="nt"></ion-input>
+
+
+      <button ion-button icon-only clear (click)="additrm()" item-end [hidden]="nt" >
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-item>
+
+  </ion-list>
+
+
+
+  <button ion-button full style="width:85%; margin-left: 8%;" (click)="addtodoc()" [hidden]="de">Register </button>
+
+
+
+
+
+
+
+
+
+</ion-content>
